@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "kaantanis/filament-url-tracker",
+    "description": "URL Tracker",
     "keywords": [
-        ":vendor_name",
+        "KaanTanis",
         "laravel",
-        ":package_slug"
+        "filament-url-tracker"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/kaantanis/filament-url-tracker",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Kaan",
+            "email": "kt@kaantanis.com",
             "role": "Developer"
         }
     ],
@@ -38,13 +38,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "KaanTanis\\FilamentUrlTracker\\": "src",
+            "KaanTanis\\FilamentUrlTracker\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "KaanTanis\\FilamentUrlTracker\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -67,10 +67,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "KaanTanis\\FilamentUrlTracker\\FilamentUrlTrackerServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "FilamentUrlTracker": "KaanTanis\\FilamentUrlTracker\\Facades\\FilamentUrlTracker"
             }
         }
     },
