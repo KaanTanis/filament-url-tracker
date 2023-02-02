@@ -4,7 +4,7 @@ namespace KaanTanis\FilamentUrlTracker;
 
 use Filament\Navigation\UserMenuItem;
 use Filament\PluginServiceProvider;
-use KaanTanis\FilamentUrlTracker\Resources\UrlTrackerResource\UrlTrackerResource;
+use KaanTanis\FilamentUrlTracker\Resources\UrlTrackerResource;
 use Spatie\LaravelPackageTools\Package;
 
 class FilamentUrlTrackerServiceProvider extends PluginServiceProvider
@@ -37,16 +37,8 @@ class FilamentUrlTrackerServiceProvider extends PluginServiceProvider
 
     public function configurePackage(Package $package): void
     {
-        $package->name(static::$name);
-    }
-
-    protected function getUserMenuItems(): array
-    {
-        return [
-            UserMenuItem::make()
-                ->label('testt')
-                ->url('test.com')
-                ->icon('heroicon-s-cog'),
-        ];
+        $package->name(static::$name)
+            ->hasConfigFile()
+            ->hasTranslations();
     }
 }

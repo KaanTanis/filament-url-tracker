@@ -2,6 +2,8 @@
 
 // config for KaanTanis/FilamentUrlTracker
 return [
-    // pagination
-    // labels etc.
+    'menu-icon' => 'heroicon-s-cog',
+    'nav-group' => false,
+    'nav-sort' => 2,
+    'per-page-select-options' => [5, 10, 25, 50, -1]
 ];
