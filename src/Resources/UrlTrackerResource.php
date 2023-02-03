@@ -10,6 +10,7 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
+use KaanTanis\FilamentUrlTracker\Resources\UrlTrackerResource\Pages\CreateUrls;
 use KaanTanis\FilamentUrlTracker\Resources\UrlTrackerResource\Pages\ListUrls;
 use KaanTanis\FilamentUrlTracker\Resources\UrlTrackerResource\Pages\EditUrls;
 use KaanTanis\FilamentUrlTracker\Resources\UrlTrackerResource\RelationManager\UrlLogsRelationManager;
@@ -37,6 +38,12 @@ class UrlTrackerResource extends Resource
             ->schema([
                 Select::make('created_by')
                     ->label('filament-url-tracker::filament-url-tracker.created_by')
+                    ->options(function () {
+                        $class = config('filament-url-tracker.user-model');
+                        $model = new $class;
+                        return $model->pluck('name', 'id');
+                    })
+                    ->searchable()
                     ->translateLabel(),
 
                 TextInput::make('url')
@@ -44,10 +51,10 @@ class UrlTrackerResource extends Resource
                     ->translateLabel(),
 
                 Placeholder::make('short_url')
-                    // todo: route not working why?
-                    ->formatStateUsing(fn($record) => route('url-tracker.generated-url', [
+                    ->hiddenOn('create')
+                    ->formatStateUsing(fn($record) => isset($record->placeholder) ? route('url-tracker.generated-url', [
                         'placeholder' => $record->placeholder
-                    ]))
+                    ]) : null)
                     ->label('filament-url-tracker::filament-url-tracker.short_url')
                     ->translateLabel(),
             ]);
@@ -116,7 +123,8 @@ class UrlTrackerResource extends Resource
     {
         return [
             'index' => ListUrls::route('/'),
-            'edit' => EditUrls::route('/{record}/edit')
+            'edit' => EditUrls::route('/{record}/edit'),
+            'create' => CreateUrls::route('/create')
         ];
     }
 }
