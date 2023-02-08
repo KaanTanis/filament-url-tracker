@@ -26,7 +26,7 @@
         "filament/filament": "^2.0",
         "spatie/laravel-package-tools": "^1.13.5",
         "illuminate/contracts": "^9.0",
-        "kaantanis/url-tracker": "*"
+        "kaantanis/url-tracker": "dev-main"
     },
     "require-dev": {
         "laravel/pint": "^1.0",

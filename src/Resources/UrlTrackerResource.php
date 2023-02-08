@@ -10,9 +10,9 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
-use KaanTanis\FilamentUrlTracker\Resources\UrlTrackerResource\Pages\CreateUrls;
 use KaanTanis\FilamentUrlTracker\Resources\UrlTrackerResource\Pages\ListUrls;
 use KaanTanis\FilamentUrlTracker\Resources\UrlTrackerResource\Pages\EditUrls;
+use KaanTanis\FilamentUrlTracker\Resources\UrlTrackerResource\Pages\ViewUrls;
 use KaanTanis\FilamentUrlTracker\Resources\UrlTrackerResource\RelationManager\UrlLogsRelationManager;
 use KaanTanis\UrlTracker\Models\UrlTrackerTable;
 
@@ -50,8 +50,8 @@ class UrlTrackerResource extends Resource
                     ->label('filament-url-tracker::filament-url-tracker.url')
                     ->translateLabel(),
 
-                Placeholder::make('short_url')
-                    ->hiddenOn('create')
+                TextInput::make('short_url')
+                    ->disabled()
                     ->formatStateUsing(fn($record) => isset($record->placeholder) ? route('url-tracker.generated-url', [
                         'placeholder' => $record->placeholder
                     ]) : null)
@@ -123,8 +123,8 @@ class UrlTrackerResource extends Resource
     {
         return [
             'index' => ListUrls::route('/'),
+            'view' => ViewUrls::route('{record}/show'),
             'edit' => EditUrls::route('/{record}/edit'),
-            'create' => CreateUrls::route('/create')
         ];
     }
 }
