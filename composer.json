@@ -15,12 +15,6 @@
             "role": "Developer"
         }
     ],
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../url-tracker/*"
-        }
-    ],
     "require": {
         "php": "^8.0",
         "filament/filament": "^2.0",
